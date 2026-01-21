@@ -1,0 +1,288 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --bg-color: #1c0b0f;       /* deep burgundy background */
+    --text-color: #f5e5e8;     /* light pinkish text */
+    --subtext-color: #d8a8b4;  /* softer subtext */
+    --header-bg: #2a0d14;
+    --card-bg: #2a0d14;
+    --navbar-bg: #2a0d14;
+    --navbar-text: #f5e5e8;
+    --navbar-hover: #4d0f20;
+    --card-shadow: rgba(255,0,50,0.2);
+    --footer-bg: #2a0d14;
+    --footer-text: #d8a8b4;
+}
+
+/* Dark mode variables */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#navbar {
+    background-color: var(--navbar-bg);
+    overflow: hidden;
+}
+
+#navbar li {
+    float: left;
+    list-style-type: none;
+}
+
+#navbar a {
+    display: block;
+    color: var(--navbar-text);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#navbar a:hover {
+    background-color: var(--navbar-hover);
+    transform: scale(1.1);
+}
+
+.header {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--header-bg);
+}
+
+.projects {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--navbar-bg);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px var(--card-shadow);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+}
+
+/* Glow effect */
+.glow {
+    box-shadow: 0 0 30px rgba(128, 0, 0, 0.8);
+}
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --subtext-color: #aaa;
+    --header-bg: #121212;
+    --navbar-bg: #1e1e1e;
+    --navbar-text: #e0e0e0;
+    --navbar-hover: #333;
+    --card-bg: #1e1e1e;
+    --card-shadow: rgba(0,0,0,0.5);
+    --footer-bg: #1e1e1e;
+    --footer-text: #aaa;
+}
+
+/* ==============================
+   Global Styles
+   ============================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==============================
+   Navbar
+   ============================== */
+#navbar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 15px 0;
+    gap: 25px;
+    background-color: var(--navbar-bg);
+    position: sticky;
+    top: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+
+#navbar li a {
+    color: var(--navbar-text);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    background-color: var(--navbar-hover);
+    color: var(--navbar-text);
+}
+
+/* ==============================
+   Dark Mode Toggle Switch
+   ============================== */
+#darkModeToggle {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 26px;
+    background-color: var(--navbar-bg);
+    border: 2px solid var(--navbar-text);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    z-index: 2000;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Circle inside toggle */
+#darkModeToggle::before {
+    content: '';
+    width: 22px;
+    height: 22px;
+    background-color: var(--navbar-text);
+    border-radius: 50%;
+    margin-left: 2px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Move circle when dark mode is active */
+body.dark-mode #darkModeToggle::before {
+    transform: translateX(24px);
+    background-color: var(--navbar-text);
+}
+
+/* ==============================
+   Header / Hero
+   ============================== */
+.header {
+    text-align: center;
+    padding: 120px 20px 80px;
+    background-color: var(--header-bg);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: var(--subtext-color);
+}
+
+/* ==============================
+   Main Sections
+   ============================== */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+section {
+    margin-bottom: 60px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+section h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* ==============================
+   Portfolio Grid
+   ============================== */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+.project-card h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.project-card p {
+    color: var(--subtext-color);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    font-size: 0.95rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+@media(max-width: 600px) {
+    .header h1 { font-size: 2rem; }
+    #navbar { flex-direction: column; gap: 12px; }
+}
