@@ -1,0 +1,51 @@
+
+Static Files in Django - Configuring Java Scripts - Developing Accessibility Feature 
+Muhammad Ahmad
+•
+24 Feb
+a11y-toggle.js
+JavaScript
+
+fontslider.js
+JavaScript
+
+highcontrast.js
+JavaScript
+
+navbar.css
+CSS
+
+navbar.html
+HTML
+
+L7_Static_Files_CSS_JS_Images.pptx (1).pdf
+PDF
+
+Class comments
+(function () {
+  const KEY = "highContrastEnabled";
+
+  function setContrast(enabled) {
+    document.documentElement.classList.toggle("high-contrast", enabled);
+    localStorage.setItem(KEY, enabled ? "1" : "0");
+  }
+
+  function loadContrast() {
+    return localStorage.getItem(KEY) === "1";
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("contrastToggle");
+    if (!toggle) return;
+
+    // Restore saved state
+    const enabled = loadContrast();
+    toggle.checked = enabled;
+    setContrast(enabled);
+
+    // Update on change
+    toggle.addEventListener("change", () => {
+      setContrast(toggle.checked);
+    });
+  });
+})();
