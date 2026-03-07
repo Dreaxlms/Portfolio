@@ -1,0 +1,66 @@
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+
+  <div class="nav-header">
+    <div class="nav-title">T Level Website</div>
+  </div>
+
+  <div class="nav-btn">
+    <label for="nav-check" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <div class="nav-links">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'services' %}">Services</a>
+
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+    <a href="#">Link 5</a>
+
+    <!-- Accessibility toggle button -->
+    <button
+      type="button"
+      class="a11y-toggle"
+      id="a11yToggle"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="a11yPanel"
+      title="Accessibility options"
+    >
+      Aa
+    </button>
+
+    <!-- Accessibility dropdown panel -->
+    <div class="a11y-panel" id="a11yPanel" hidden>
+      <div class="a11y-row">
+        <button type="button" class="a11y-btn" id="fontDown" aria-label="Decrease text size">A−</button>
+
+        <input type="range" id="fontScale" min="85" max="130" step="5" value="100"
+               aria-label="Font size slider">
+
+        <button type="button" class="a11y-btn" id="fontUp" aria-label="Increase text size">A+</button>
+      </div>
+
+      <button type="button" class="a11y-btn a11y-reset" id="fontReset" aria-label="Reset text size">
+        Reset
+      </button>
+
+      <div class="a11y-contrast">
+        <label class="a11y-switch">
+          <input type="checkbox" id="contrastToggle">
+          <span>High contrast</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
