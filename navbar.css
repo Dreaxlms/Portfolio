@@ -1,0 +1,232 @@
+/* navbar.css */
+
+/* Reset / base */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "segoe ui";
+}
+html, body {
+  overflow-x: hidden;
+}
+
+/* ===== Desktop / default ===== */
+.nav {
+  height: 90px;
+  width: 100%;
+  background-color: #4d4d4d;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav > #nav-check { display: none; }
+
+.nav > .nav-header {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.nav > .nav-header > .nav-title {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+/* Burger hidden on desktop */
+.nav > .nav-btn { display: none; }
+
+/* Right side links row */
+.nav > .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 90px;
+  padding-right: 10px;
+}
+
+/* Links */
+.nav > .nav-links > a {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #efefef;
+  font-size: 20px;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Accessibility button */
+.a11y-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* Dropdown panel (desktop) */
+.a11y-panel {
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  background: #333;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
+  min-width: 260px;
+}
+
+.a11y-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.a11y-btn {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+#a11yPanel input[type="range"] { width: 140px; }
+
+.a11y-reset {
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* High contrast toggle row in panel */
+.a11y-contrast { margin-top: 10px; }
+
+.a11y-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #efefef;
+  font-size: 14px;
+}
+
+/* High contrast mode (site-wide) */
+html.high-contrast body { background: #000; color: #fff; }
+html.high-contrast a { color: #00ffff; text-decoration: underline; }
+html.high-contrast .nav { background-color: #000; }
+html.high-contrast .nav > .nav-links > a { color: #fff; }
+html.high-contrast .nav > .nav-links > a:hover { background-color: #222; }
+html.high-contrast button,
+html.high-contrast input {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+
+  /* Make header + burger behave nicely in flex */
+  .nav { flex-wrap: wrap; }
+  .nav > .nav-header > .nav-title { font-size: 22px; }
+
+  .nav > .nav-header {
+    width: calc(100% - 60px);
+  }
+
+  /* Show burger button */
+  .nav > .nav-btn {
+    display: flex;
+    width: 60px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+  }
+
+  /* Ensure burger label is clickable (on top) */
+  .nav > .nav-btn,
+  .nav > .nav-btn > label {
+    position: relative;
+    z-index: 2000;
+  }
+
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 90px;        /* match navbar height */
+    padding: 30px 13px;  /* centers the bars vertically */
+    cursor: pointer;
+  }
+
+  .nav > .nav-btn > label:hover,
+  .nav #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+
+  /* Turn right-side row into dropdown menu */
+  .nav > .nav-links {
+    position: absolute;
+    left: 0;
+    top: 90px;
+    width: 100%;
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+
+    background-color: #333;
+
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in;
+    padding-right: 0;
+  }
+
+  .nav > .nav-links > a {
+    width: 100%;
+    height: auto;
+    padding: 14px 12px;
+    font-size: 18px;
+  }
+
+  /* Aa button becomes full-width menu item */
+  .a11y-toggle {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 14px 12px;
+  }
+
+  /* Panel becomes inline in the dropdown */
+  .a11y-panel {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    border: none;
+  }
+
+  #a11yPanel input[type="range"] { width: 100%; }
+
+  /* Closed */
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0;
+  }
+
+  /* Open */
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
+}
