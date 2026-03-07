@@ -1,12 +1,11 @@
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 :root {
-    --bg-color: #1c0b0f;       /* deep burgundy background */
-    --text-color: #f5e5e8;     /* light pinkish text */
-    --subtext-color: #d8a8b4;  /* softer subtext */
+    --bg-color: #1c0b0f;       
+    --text-color: #f5e5e8;     
+    --subtext-color: #d8a8b4;  /
     --header-bg: #2a0d14;
-    --card-bg: #2a0d14;
+    --card-bg: #2a0d14
     --navbar-bg: #2a0d14;
     --navbar-text: #f5e5e8;
     --navbar-hover: #4d0f20;
@@ -15,7 +14,7 @@
     --footer-text: #d8a8b4;
 }
 
-/* Dark mode variables */
+/* Dark mode*/
 
 * {
     box-sizing: border-box;
@@ -213,9 +212,6 @@ body.dark-mode #darkModeToggle::before {
     color: var(--subtext-color);
 }
 
-/* ==============================
-   Main Sections
-   ============================== */
 main {
     max-width: 900px;
     margin: auto;
@@ -267,9 +263,7 @@ section h2 {
     color: var(--subtext-color);
 }
 
-/* ==============================
-   Footer
-   ============================== */
+
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -279,10 +273,9 @@ footer {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* ==============================
-   Responsive
-   ============================== */
+
 @media(max-width: 600px) {
     .header h1 { font-size: 2rem; }
     #navbar { flex-direction: column; gap: 12px; }
 }
+
